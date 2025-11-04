@@ -1,14 +1,14 @@
+# app_ml.py
 import streamlit as st
-import pickle
 import numpy as np
 from PIL import Image
+import joblib  # <-- use joblib instead of pickle
 
 st.title("🩺 Pneumonia Detection using ML (SVM)")
 st.write("Upload a chest X-ray image to get the prediction.")
 
 # Load model
-with open("ml_baseline_svm_model.pkl", "rb") as f:
-    model = pickle.load(f)
+model = joblib.load("ml_baseline_svm_model.joblib")
 st.success("✅ Model loaded successfully!")
 
 # Upload image
